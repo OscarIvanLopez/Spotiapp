@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root',
 })
@@ -9,18 +10,24 @@ export class SpotifyService {
     console.log('Liston');
   }
 
-  getNewReleqases() {
+  getQuery(query: string) {
+    const url = `https://api.spotify.com/v1/${query}`;
+
     const headers = new HttpHeaders({
       Authorization:
-        'Bearer BQCHBtGI_OrLbs-rhe5qg-gaGo3-mueAfl5h3NZGgDeDg9Yc4x-Cfx6hnadvyufFkFm3gAOP_K6NNSCpVEI',
+        'Bearer BQBNtgOlLUTd6vANqpb8sVqFSh75Zggzo0LEBHzMTIKfvwuieZhPqm9ogEfhjNVCN6WvZeytMzTrpm0Dk40',
     });
+    return this.http.get(url, { headers });
+  }
 
-    return this.http.get(
-      'https://api.spotify.com/v1/browse/new-releases?limit=20',
-      { headers }
+  getNewReleqases() {
+    return this.getQuery('browse/new-releases?limit=20').pipe(
+      map((data: any) => data['albums'].items)
     );
-    // .subscribe((data) => {
-    //   console.log(data);
-    // });
+  }
+  getArtists(term: string) {
+    return this.getQuery(`search?q=${term}&type=track%2Cartist&limit=20`).pipe(
+      map((data: any) => data['artists'].items)
+    );
   }
 }

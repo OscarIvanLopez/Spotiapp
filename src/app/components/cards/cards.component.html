@@ -1,0 +1,15 @@
+<div class="card-columns mt-5 animate__animated animate__fadeIn">
+  <div *ngFor="let item of items" class="card">
+    <img [src]="item.images | noimage" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <h5 class="card-title">{{ item.name }}</h5>
+      <p class="card-text">
+        <span
+          *ngFor="let artists of item.artists"
+          class="badge badge-pill badge-primary"
+          >{{ artists.name }}</span
+        >
+      </p>
+    </div>
+  </div>
+</div>

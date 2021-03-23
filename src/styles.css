@@ -66,3 +66,6 @@ hr {
 .fadeIn {
   animation-name: fadeIn;
 }
+.container {
+  max-width: 90%!important;
+}
