@@ -11,6 +11,7 @@ import { ArtistComponent } from './components/artist/artist.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
 import { SearchComponent } from './components/search/search.component';
 import { NoimagePipe } from './pipes/noimage.pipe';
+import { DomseguroPipe } from './pipes/domseguro.pipe';
 import { CardsComponent } from './components/cards/cards.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 
@@ -21,9 +22,10 @@ import { LoadingComponent } from './shared/loading/loading.component';
     ArtistComponent,
     NavbarComponent,
     SearchComponent,
-    NoimagePipe,
     CardsComponent,
     LoadingComponent,
+    NoimagePipe,
+    DomseguroPipe,
   ],
   imports: [
     BrowserModule,
